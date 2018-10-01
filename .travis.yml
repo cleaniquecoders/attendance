@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+
+before_script:
+  - travis_retry composer install --prefer-dist --no-interaction
+
+cache:
+  directories:
+    - vendor
+
+script:
+  - vendor/bin/phpunit  --testdox --verbose
