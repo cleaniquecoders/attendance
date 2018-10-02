@@ -35,6 +35,12 @@ class InstallCommand extends Command
      */
     public function handle()
     {
+        if ('testing' != app()->environment()) {
+            $route = file_get_contents(__DIR__ . '/stubs/routes/api.stub');
+            $file  = base_path('routes/api.php');
+            file_put_contents($file, $route, FILE_APPEND | LOCK_EX);
+        }
+
         $this->call('vendor:publish', [
             '--provider' => 'CleaniqueCoders\Attendance\AttendanceServiceProvider',
             '--force'    => true,
