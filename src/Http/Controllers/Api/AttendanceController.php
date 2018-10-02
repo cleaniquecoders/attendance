@@ -2,15 +2,16 @@
 
 namespace CleaniqueCoders\Attendance\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use CleaniqueCoders\Attendance\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function timeIn(Request $request)
@@ -27,7 +28,8 @@ class AttendanceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function timeOut(Request $request)

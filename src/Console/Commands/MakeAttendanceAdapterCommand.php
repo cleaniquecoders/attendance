@@ -2,7 +2,6 @@
 
 namespace CleaniqueCoders\Attendance\Console\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -30,24 +29,41 @@ class MakeAttendanceAdapterCommand extends GeneratorCommand
     protected $type = 'Adapter';
 
     /**
+     * Execute the console command.
+     *
+     * @return bool|null
+     */
+    public function handle()
+    {
+        if (! $this->option('driver')) {
+            $this->error('Driver name not specified!');
+
+            return false;
+        }
+
+        parent::handle();
+    }
+
+    /**
      * Get the stub file for the generator.
      *
      * @return string
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/attendance.stub';
+        return __DIR__ . '/stubs/attendance.stub';
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.'\Adapters';
+        return $rootNamespace . '\Adapters';
     }
 
     /**
@@ -65,30 +81,16 @@ class MakeAttendanceAdapterCommand extends GeneratorCommand
     /**
      * Replace the class name for the given stub.
      *
-     * @param  string  $stub
-     * @param  string  $name
+     * @param string $stub
+     * @param string $name
+     *
      * @return string
      */
     protected function replaceClass($stub, $name)
     {
-        $class = str_replace($this->getNamespace($name).'\\', '', $name);
-        $driver = $this->option('driver');        
+        $class  = str_replace($this->getNamespace($name) . '\\', '', $name);
+        $driver = $this->option('driver');
 
         return str_replace(['DummyClass', 'DummyDriver'], [$class, $driver], $stub);
-    }
-
-     /**
-     * Execute the console command.
-     *
-     * @return bool|null
-     */
-    public function handle()
-    {
-        if(!$this->option('driver')) {
-            $this->error('Driver name not specified!');
-            return false;
-        }
-
-        parent::handle();
     }
 }

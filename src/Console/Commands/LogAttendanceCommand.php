@@ -22,8 +22,6 @@ class LogAttendanceCommand extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -42,11 +40,11 @@ class LogAttendanceCommand extends Command
             ->firstOrFail();
         $adapter = new \App\Adapters\ConsoleAdapter($user, now());
 
-        if($this->argument('type') == \App\Models\AttendanceType::TIME_IN) {
+        if (\App\Models\AttendanceType::TIME_IN == $this->argument('type')) {
             $adapter->timeIn();
         }
 
-        if($this->argument('type') == \App\Models\AttendanceType::TIME_OUT) {
+        if (\App\Models\AttendanceType::TIME_OUT == $this->argument('type')) {
             $adapter->timeOut();
         }
 

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
 {
-	protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
     public function type()
     {
-    	return $this->belongsTo(config('attendance.models.type'))->withDefault();
+        return $this->belongsTo(config('attendance.models.type'))->withDefault();
     }
 }

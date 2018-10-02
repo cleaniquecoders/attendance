@@ -7,39 +7,6 @@ use Illuminate\Support\Facades\Schema;
 class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
-     * Load Package Service Provider.
-     *
-     * @param \Illuminate\Foundation\Application $app
-     *
-     * @return array List of Service Provider
-     */
-    protected function getPackageProviders($app)
-    {
-        return [
-            \CleaniqueCoders\Attendance\AttendanceServiceProvider::class,
-            \CleaniqueCoders\LaravelObservers\LaravelObserversServiceProvider::class,
-            \CleaniqueCoders\LaravelHelper\LaravelHelperServiceProvider::class,
-            \CleaniqueCoders\Blueprint\Macro\BlueprintMacroServiceProvider::class,
-        ];
-    }
-
-    /**
-     * Define environment setup.
-     *
-     * @param \Illuminate\Foundation\Application $app
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        // Setup default database to use sqlite :memory:
-        $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => '',
-        ]);
-    }
-
-    /**
      * Setup the test environment.
      */
     public function setUp()
@@ -188,6 +155,39 @@ class TestCase extends \Orchestra\Testbench\TestCase
         foreach ($data as $datum) {
             $this->seedDatum($datum, $class);
         }
+    }
+
+    /**
+     * Load Package Service Provider.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array List of Service Provider
+     */
+    protected function getPackageProviders($app)
+    {
+        return [
+            \CleaniqueCoders\Attendance\AttendanceServiceProvider::class,
+            \CleaniqueCoders\LaravelObservers\LaravelObserversServiceProvider::class,
+            \CleaniqueCoders\LaravelHelper\LaravelHelperServiceProvider::class,
+            \CleaniqueCoders\Blueprint\Macro\BlueprintMacroServiceProvider::class,
+        ];
+    }
+
+    /**
+     * Define environment setup.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        // Setup default database to use sqlite :memory:
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set('database.connections.testbench', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ]);
     }
 
     ////////////////////////////////////////////////////////

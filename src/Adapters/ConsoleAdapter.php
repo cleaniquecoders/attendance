@@ -1,18 +1,18 @@
-<?php 
+<?php
 
 namespace CleaniqueCoders\Attendance\Adapters;
 
 class ConsoleAdapter extends BaseAdapter
 {
-	protected $driver = 'console';
+    protected $driver = 'console';
 
-	public function timeIn()
-	{
-		$this->capture(AttendanceType::TIME_IN);
-	}
+    public function timeIn()
+    {
+        $this->capture(AttendanceType::TIME_IN);
+    }
 
-	public function timeOut()
-	{
-		$this->capture(AttendanceType::TIME_OUT);
-	}
+    public function timeOut()
+    {
+        $this->capture(AttendanceType::TIME_OUT);
+    }
 }

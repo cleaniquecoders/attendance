@@ -6,21 +6,19 @@ class AttendanceTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
         $data = [
-        	'Time In',
-        	'Time Out',
+            'Time In',
+            'Time Out',
         ];
 
         foreach ($data as $datum) {
-        	\CleaniqueCoders\Attendance\Models\AttendanceType::create([
-        		'name' => $datum,
-        		'label' => kebab_case($datum),
-        	]);
+            \CleaniqueCoders\Attendance\Models\AttendanceType::create([
+                'name'  => $datum,
+                'label' => kebab_case($datum),
+            ]);
         }
     }
 }
