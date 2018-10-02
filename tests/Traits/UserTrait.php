@@ -50,11 +50,11 @@ trait UserTrait
         $this->seedUsers();
 
         $user = \DB::table('users')->where('id', '=', 2)->first();
-        $this->assertEquals('hi@open-payroll.com', $user->email);
+        $this->assertEquals('hi@attendance.com', $user->email);
         $this->assertTrue(\Hash::check('456', $user->password));
 
         $user = \DB::table('users')->where('id', '=', 1)->first();
-        $this->assertEquals('hello@open-payroll.com', $user->email);
+        $this->assertEquals('hello@attendance.com', $user->email);
         $this->assertTrue(\Hash::check('456', $user->password));
     }
 }
