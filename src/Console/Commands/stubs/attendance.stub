@@ -8,11 +8,13 @@ class DummyClass extends BaseAdapter
 
 	public function timeIn()
 	{
-		// implementation
+		// your implementation to determine user is time in
+		$this->capture(config('attendance.models.type')::TIME_IN);
 	}
 
 	public function timeOut()
 	{
-		// implementation
+		// your implementation to determine user is time out
+		$this->capture(config('attendance.models.type')::TIME_OUT);
 	}
 }
