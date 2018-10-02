@@ -46,5 +46,8 @@ class AttendanceServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+             __DIR__ . '/../config/attendance.php', 'attendance'
+        );
     }
 }
