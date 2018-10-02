@@ -39,6 +39,24 @@ CleaniqueCoders\Attendance\AttendanceServiceProvider::class,
 $ php artisan attendance:install
 ```
 
+5. Setup `AttendanceTrait` to your user model.
+
+```php
+<?php
+
+namespace App;
+
+use CleaniqueCoders\Attendance\Traits\AttendanceTrait;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable, AttendanceTrait;
+...
+```
+
 ## Usage
 
 ### Artisan Commands
@@ -62,6 +80,21 @@ $ php artisan attendance:log "hi@attendance.com" 2 "email"
 ### API
 
 When running `attendance:install`, API routes to for attendance will be append into your `routes/api.php` file.
+
+### Scopes
+
+To get all entries for today, you can use `todayEntries()` scope.
+
+```php
+\CleaniqueCoders\Attendance\Models\Attendance::todayEntries()->get();
+```
+
+To get based on one or more drivers.
+
+```php
+\CleaniqueCoders\Attendance\Models\Attendance::todayEntries('web')->get();
+\CleaniqueCoders\Attendance\Models\Attendance::todayEntries(['api', 'access-card'])->get();
+```
 
 ### Custom adapter
 
