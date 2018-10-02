@@ -17,7 +17,7 @@ class AttendanceTypeSeeder extends Seeder
         ];
 
         foreach ($data as $datum) {
-        	config('attendance.models.type')::create([
+        	\CleaniqueCoders\Attendance\Models\AttendanceType::create([
         		'name' => $datum,
         		'label' => kebab_case($datum),
         	]);
