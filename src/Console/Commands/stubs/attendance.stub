@@ -1,0 +1,18 @@
+<?php 
+
+namespace DummyNamespace;
+
+class DummyClass extends BaseAdapter
+{
+	protected $driver = 'DummyDriver';
+
+	public function timeIn()
+	{
+		// implementation
+	}
+
+	public function timeOut()
+	{
+		// implementation
+	}
+}
