@@ -1,4 +1,3 @@
-<?php 
 
 Route::post('attendance/time-in', '\CleaniqueCoders\Http\Controllers\Api\AttendanceController@timeIn')
     ->name('api.attendance.time-in');
